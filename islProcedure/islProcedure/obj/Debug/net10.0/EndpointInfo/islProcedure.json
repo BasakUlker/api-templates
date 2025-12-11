@@ -1,0 +1,181 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "islProcedure",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Values": {
+      "post": {
+        "tags": [
+          "Values"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRequestDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRequestDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRequestDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/WeatherForecast": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "operationId": "GetWeatherForecast",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreateRequestDTO": {
+        "required": [
+          "cariIsim",
+          "cariKod",
+          "cariTip",
+          "detayKodu",
+          "isletmeKodu",
+          "kayitYapanKul",
+          "subeKodu"
+        ],
+        "type": "object",
+        "properties": {
+          "subeKodu": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isletmeKodu": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cariKod": {
+            "maxLength": 15,
+            "minLength": 1,
+            "type": "string"
+          },
+          "cariTel": {
+            "maxLength": 20,
+            "type": "string",
+            "nullable": true
+          },
+          "cariIl": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "ulkeKodu": {
+            "maxLength": 4,
+            "type": "string",
+            "nullable": true
+          },
+          "cariIsim": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "cariTip": {
+            "maxLength": 1,
+            "minLength": 1,
+            "type": "string"
+          },
+          "cariAdres": {
+            "maxLength": 255,
+            "type": "string",
+            "nullable": true
+          },
+          "detayKodu": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "kayitYapanKul": {
+            "maxLength": 12,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WeatherForecast": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "temperatureC": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "temperatureF": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Values"
+    },
+    {
+      "name": "WeatherForecast"
+    }
+  ]
+}
